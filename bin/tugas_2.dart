@@ -1,4 +1,6 @@
 import 'dart:io';
+//C14190024 - SERGIUS GEOFFREY
+//TUGAS 2 - Dart Patterns
 
 void genapPattern(int N){ 
   int kiri=1;
@@ -19,9 +21,11 @@ void genapPattern(int N){
           kiri++;
         }
     }
+    
     for(int j = 1; j < i*2-1; j++){
         stdout.write(" ");
     }
+
     for(int j = N+1-i; j >= 1; j--){
         if(kanan < 1){
           kanan=N;
@@ -41,6 +45,56 @@ void genapPattern(int N){
     print("");
   }
 }
+
+void ganjilPattern(int N){
+  int Counter = 1;
+  for(int i = 1;i<=(N / 2).toInt() + 1;i++){
+    for(int a = 1;a<=(N / 2).toInt() + 1 - i;a++){
+      stdout.write("*");
+    }
+
+    for(int j = 1;j<=(i*2) - 1;j++){
+      if (j % 2 != 0) {
+        if (Counter % 9 == 0) {
+          stdout.write(9);
+        } else {
+          stdout.write(Counter % 9);
+        }
+        
+        } else {
+          stdout.write(" ");
+        }
+    }
+    for(int a=(N / 2).toInt() + 1 - i; a >= 1;a--){
+      stdout.write("*");
+    }
+    Counter++;
+    print("");
+  }
+  for(int i=(N / 2).toInt();i>=1;i--){
+      for (var a = 1; a <= (N / 2).toInt() - i + 1; a++) {
+          stdout.write("*");
+      }
+
+      for (var j = 1; j <= i * 2 - 1; j++) {
+        if (j % 2 != 0) {
+          if (Counter % 9 == 0) {
+          stdout.write(9);
+        } else {
+          stdout.write(Counter % 9);
+        }
+        } else {
+          stdout.write(" ");
+        }
+      }
+      for (var a = (N / 2).toInt() - i + 1; a >= 1; a--) {
+          stdout.write("*");
+      }
+      Counter++;
+      print("");
+  }
+}
+
 void main(List<String> arguments) {
   stdout.write("Input Number: ");
   String? dtInput = stdin.readLineSync();
@@ -50,7 +104,7 @@ void main(List<String> arguments) {
     genapPattern(angka);
   } 
   else if(angka % 2 == 1) {
-    
+    ganjilPattern(angka);
   } 
   else {
     print("Invalid Input");
